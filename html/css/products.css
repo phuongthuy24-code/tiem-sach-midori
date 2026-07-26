@@ -269,3 +269,206 @@ body {
 .footer-bottom p {
   margin: 0;
 }
+
+
+
+/* phần CSS cho trang chi tiết sản phẩm */
+/* ==========================================
+   CHI TIẾT SẢN PHẨM (PRODUCT DETAIL)
+   ========================================== */
+
+/* Khung chứa tổng thể */
+.product-detail-wrapper {
+    max-width: 1150px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+/* Tiêu đề sách */
+.product-main-title {
+    font-size: 24px;
+    font-weight: normal;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Bố cục 3 cột chính */
+.product-detail-body {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+}
+
+/* Cột trái: Khung ảnh */
+.product-left {
+    width: 320px;
+    flex-shrink: 0;
+}
+
+.img-box {
+    border: 1px solid #e5e5e5;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+}
+
+.img-box img {
+    max-width: 100%;
+    height: auto;
+    max-height: 380px;
+    object-fit: contain;
+}
+
+/* Cột giữa: Thông tin sản phẩm */
+.product-center {
+    flex: 1;
+}
+
+.info-row {
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #666;
+}
+
+.info-row .label {
+    display: inline-block;
+    width: 110px;
+    font-weight: bold;
+    color: #333;
+}
+
+.info-row .value {
+    color: #777;
+}
+
+.info-row .status-stock {
+    color: #555;
+}
+
+/* Giá bán */
+.price-box {
+    margin: 20px 0;
+}
+
+.current-price {
+    font-size: 28px;
+    font-weight: bold;
+    color: #f36f21; /* Màu cam nổi bật */
+    margin-right: 12px;
+}
+
+.old-price {
+    font-size: 18px;
+    color: #999;
+    text-decoration: line-through;
+}
+
+/* Mô tả ngắn */
+.short-desc {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+    padding-top: 15px;
+    border-top: 1px dashed #e0e0e0;
+    margin-bottom: 25px;
+}
+
+/* Khung chọn số lượng & Nút Mua Ngay */
+.action-box {
+    border-top: 1px dashed #e0e0e0;
+    padding-top: 15px;
+}
+
+.qty-label {
+    display: block;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.action-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.quantity-selector {
+    display: flex;
+    border: 1px solid #ccc;
+}
+
+.btn-qty {
+    width: 32px;
+    height: 38px;
+    background: #fff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #333;
+}
+
+.quantity-selector input {
+    width: 50px;
+    height: 38px;
+    border: none;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    text-align: center;
+    font-size: 14px;
+    outline: none;
+}
+
+/* Nút MUA NGAY */
+.btn-buy-now {
+    background-color: #f36f21;
+    color: white;
+    border: none;
+    height: 40px;
+    padding: 0 30px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+}
+
+.btn-buy-now:hover {
+    background-color: #e05d0e;
+}
+
+/* Cột phải: Tag Best-Seller */
+.product-right {
+    width: 200px;
+    flex-shrink: 0;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+}
+
+.badge-tag {
+    position: relative;
+    background-color: #f36f21;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 8px 12px;
+    display: inline-block;
+}
+
+.badge-tag::after {
+    content: "";
+    position: absolute;
+    right: -12px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+    border-left: 12px solid #f36f21;
+}
