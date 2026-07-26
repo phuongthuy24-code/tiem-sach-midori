@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiệm sách Midori</title>
+    <link rel = "stylesheet" href="css/profile.css" >
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body background="images/backgroundlogin.jpg" style="background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
+    <header>
+        <nav class = "navbar">
+            <a href = "index.html" class = "logo" >
+                <img src = "images/logo.png" alt = "Logo Midori" class = "logo-img" >
+            </a>
+            <form action="#" method="get" class = "search-box">
+                <input type = "text" placeholder = "Midori tìm cho bạn..." >
+                <button type = "submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <ul class = "nav-links">
+                <li><a href = "index.html" class="nav-item active" ><i class="fa-solid fa-house"></i></a></li>
+                <li><a href = "products.html"><i class="fa-solid fa-box-open"></i></a></li>
+                <li><a href = "cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li><a href = "contact.html"><i class="fa-solid fa-phone"></i></a></li>
+                <li><a href = "login.html"><i class="fa-solid fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+        <section class="profile-container">
+            <!-- ========================================== -->
+            <!-- CỘT TRÁI: SIDEBAR MENU KIỂU SHOPEE        -->
+            <!-- ========================================== -->
+            <aside class="profile-sidebar">
+            <!-- 1. Avatar & Tên tài khoản -->
+            <div class="user-brief">
+                <div class="avatar-circle">
+                    <!-- Để trống hoặc dấu ?, JS sẽ tự điền chữ cái đầu -->
+                    <span id="avatar-text">?</span>
+                </div>
+                <div class="user-info-short">
+                    <!-- Tên tài khoản hiển thị động -->
+                    <span id="user-username" class="username">Đang tải...</span>
+                    <a href="#" class="edit-profile-btn" onclick="switchMainTab('profile')">
+                        <i class="fa-solid fa-pen"></i> Sửa Hồ Sơ
+                    </a>
+                </div>
+            </div>
+
+                <!-- 2. Danh sách Menu chức năng -->
+                <ul class="sidebar-menu">
+                    <li class="menu-item active" id="menu-orders" onclick="switchMainTab('orders')">
+                        <i class="fa-regular fa-clipboard icon-orange"></i>
+                        <span>Đơn Mua</span>
+                    </li>
+                    <li class="menu-item" id="menu-account" onclick="switchMainTab('profile')">
+                        <i class="fa-regular fa-user icon-blue"></i>
+                        <span>Tài Khoản Của Tôi</span>
+                    </li>
+                    <li class="menu-item" id="menu-notifications">
+                        <i class="fa-regular fa-bell icon-red"></i>
+                        <span>Thông Báo</span>
+                    </li>
+                    <li class="menu-item" id="btn-logout">
+                        <i class="fa-solid fa-right-from-bracket icon-gray"></i>
+                        <span>Đăng Xuất</span>
+                    </li>
+                </ul>
+            </aside>
+
+
+            <!-- ========================================== -->
+            <!-- CỘT PHẢI: NỘI DUNG CHÍNH                  -->
+            <!-- ========================================== -->
+            <section class="profile-main-content">
+
+                <!-- TAB 1: QUẢN LÝ ĐƠN MUA (MẶC ĐỊNH HIỆN KIỂU SHOPEE) -->
+                <div id="tab-content-orders" class="tab-panel active">
+                    <!-- Thanh phân loại trạng thái đơn hàng -->
+                    <div class="order-status-tabs">
+                        <button class="status-btn active">Tất cả</button>
+                        <button class="status-btn">Chờ thanh toán</button>
+                        <button class="status-btn">Vận chuyển</button>
+                        <button class="status-btn">Chờ giao hàng</button>
+                        <button class="status-btn">Hoàn thành</button>
+                        <button class="status-btn">Đã hủy</button>
+                        <button class="status-btn">Trả hàng/Hoàn tiền</button>
+                    </div>
+
+                    <!-- Ô tìm kiếm đơn hàng -->
+                    <div class="order-search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Bạn có thể tìm kiếm theo tên Shop, ID đơn hàng hoặc Tên Sản phẩm">
+                    </div>
+
+                    <!-- Danh sách đơn hàng (Mặc định hiện giỏ trống nếu chưa mua) -->
+                    <div class="order-list-box">
+                        <div class="empty-orders">
+                            <img src="images/empty-order.png" alt="Chưa có đơn hàng" class="empty-order-img" onerror="this.src='https://cdni.iconscout.com/illustration/premium/thumb/empty-cart-3840333-3200922.png'">
+                            <p>Chưa có đơn hàng</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- TAB 2: THÔNG TIN TÀI KHOẢN (HỒ SƠ TÔI) -->
+                <div id="tab-content-profile" class="tab-panel">
+                    <div class="profile-header-title">
+                        <h2>Hồ Sơ Của Tôi</h2>
+                        <p>Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
+                    </div>
+                    <hr class="divider">
+
+                    <div class="profile-details-form">
+                        <div class="info-row">
+                            <label>Họ và tên:</label>
+                            <span id="info-name">---</span>
+                        </div>
+                        <div class="info-row">
+                            <label>Email:</label>
+                            <span id="info-email">---</span>
+                        </div>
+                        <div class="info-row">
+                            <label>Số điện thoại:</label>
+                            <span id="info-phone">---</span>
+                        </div>
+                        <div class="info-row">
+                            <label>Hạng thành viên:</label>
+                            <span class="badge-vip">Độc giả thân thiết 🌿</span>
+                        </div>
+                        
+                        <!-- 🔴 THÊM NÚT XÓA TÀI KHOẢN Ở ĐÂY -->
+                        <div class="info-row" style="margin-top: 30px;">
+                            <label></label>
+                            <button id="btn-delete-account" style="background-color: #ff4d4f; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600;">
+                                <i class="fa-solid fa-trash-can" style="margin-right: 5px;"></i> Xóa tài khoản này
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </section>
+    </main>
+
+
+    
+
+    <footer class="site-footer">
+        <div class="footer-container">
+    
+    <!-- Cột 1: Giới thiệu tiệm -->
+        <div class="footer-col">
+            <h3>Tiệm Nhỏ Midori</h3>
+            <p>Chuyên phụ kiện cườm, vòng tay và trang sức thủ công xinh xắn mang đến niềm vui nhỏ mỗi ngày cho bạn.</p>
+        </div>
+
+    <!-- Cột 2: Điều hướng nhanh -->
+        <div class="footer-col">
+            <h4>Liên Kết Nhanh</h4>
+            <ul>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="products.html">Sản Phẩm</a></li>
+                <li><a href="cart.html">Giỏ Hàng</a></li>
+                <li><a href="#">Liên Hệ</a></li>
+            </ul>
+        </div>
+
+        <!-- Cột 3: Thông tin liên hệ -->
+        <div class="footer-col">
+            <h4>Thông Tin Liên Hệ</h4>
+            <p>📍 Địa chỉ: Hà Nội, Việt Nam</p>
+            <p>📞 Hotline/Zalo: 0987 654 321</p>
+            <p>💬 Facebook: <a href="https://www.facebook.com/tiemnhomidori" target="_blank">Tiệm Nhỏ Midori</a></p>
+            <p>✉️ Email: tiemnhomidori@gmail.com</p>
+        </div>
+
+    <!-- Dòng bản quyền dưới cùng -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 Tiệm Nhỏ Midori. All rights reserved.</p>
+        </div>
+    </footer>
+<script src="js/profile.js"></script>
+</body>
+</html>
+

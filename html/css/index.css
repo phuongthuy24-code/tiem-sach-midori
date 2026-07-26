@@ -1,0 +1,606 @@
+/* Đổi màu nền cho toàn bộ trang web */
+body {
+  background-color: #d8c0cb; /* có thể thay mã màu khác vào đây */
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Đẩy logo, ô tìm kiếm và menu ra 3 góc đều nhau */
+  align-items: center;            /* Căn giữa các phần tử theo chiều dọc */
+  background-color: #fffdfd;      /* Màu nền kem sữa nhẹ nhàng */
+  padding: 10px 40px;             /* Khoảng cách trên-dưới 15px, trái-phải 40px */
+  border-bottom: 2px solid #0c0a02;/* Viền mỏng bên dưới */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- 2. Kiểu dáng cho Logo --- */
+.logo {
+  display: flex;
+  align-items: center;       /* Căn giữa theo chiều dọc */
+  gap: 10px;                 /* Khoảng cách giữa ảnh logo và chữ MIDORI */
+  text-decoration: none;
+  color: #2E4A32;
+  font-weight: bold;
+  font-size: 20px;
+}
+/* Định dạng Ảnh Logo Tròn */
+.logo-img {
+  width: 600px;               /* Chiều rộng logo (Thúy có thể chỉnh 40px - 50px tùy thích) */
+  height: 90px;              /* Chiều cao bằng chiều rộng */
+  object-fit: cover;
+  border-radius: 0;        /* Đảm bảo logo luôn tròn xoe */
+  transition: transform 0.3s ease;
+}
+
+/* --- 3. Kiểu dáng Ô tìm kiếm (Search Box) --- */
+/* --- Ô TÌM KIẾM BO TRÒN HIỆN ĐẠI & MƯỢT MÀ --- */
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1.5px solid #2E4A32;     /* Viền xanh rêu cùng màu với Logo MIDORI */
+  border-radius: 20px;            /* BO TRÒN MƯỢT MÀ 2 ĐẦU */
+  padding: 3px 6px 3px 15px;      /* Khoảng cách chữ lùi vào trong */
+  width: 320px;                   /* Độ rộng vừa vặn, cân đối */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03); /* Bóng đổ siêu nhẹ tạo chiều sâu */
+  transition: all 0.3s ease;
+}
+
+/* Hiệu ứng khi bấm/rê chuột vào ô tìm kiếm */
+.search-box:focus-within {
+  border-color: #182011;         /* Đổi viền sang màu xanh bơ tươi */
+  box-shadow: 0 3px 10px rgba(136, 192, 87, 0.2);
+}
+
+/* Khung nhập chữ (Input) */
+.search-box input {
+  border: none !important;        /* BỎ HOÀN TOÀN VIỀN RIÊNG */
+  outline: none !important;       /* Bỏ viền xanh mặc định của trình duyệt */
+  background: transparent;
+  width: 100%;
+  font-size: 13.5px;
+  color: #2E4A32;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Chữ gợi ý mờ (Placeholder) */
+.search-box input::placeholder {
+  color: #9E9E9E;
+  font-style: italic;             /* Chữ in nghiêng nhẹ dịu mắt */
+}
+
+/* Nút bấm Kính Lúp */
+.search-box button {
+  background: transparent;        /* Bỏ màu nền xanh vuông cũ */
+  border: none !important;        /* Bỏ viền nút */
+  color: #010702;                 /* Màu kính lúp xanh rêu */
+  font-size: 14px;
+  padding: 6px 10px;
+  cursor: pointer;                /* Hiện bàn tay khi di chuột vào */
+  transition: transform 0.2s ease, color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hiệu ứng kính lúp khi hover */
+.search-box button:hover {
+  color: #fa87b7;                 /* Đổi màu kính lúp sang xanh tươi */
+  transform: scale(1.15);         /* Kính lúp phóng to nhẹ cực thích mắt */
+}
+
+/* 1. Xóa chấm tròn danh sách & xếp các icon nằm ngang */
+.nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none; /* Bỏ chấm tròn mặc định của <ul> */
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. Tạo vạch sọc dọc cho từng thẻ <li> */
+.nav-links li {
+  /* VẠCH SỌC ĐỨNG NGĂN CÁCH */
+  border-right: 1.5px solid #2E4A32; /* Sọc đứng màu xanh rêu (Thúy có thể đổi thành #000000 nếu thích màu đen tuyền) */
+  line-height: 1;                     /* Giúp chiều cao vạch sọc vừa vặn với icon */
+}
+
+/* 3. BỎ vạch sọc ở icon CUỐI CÙNG cho chuẩn giao diện */
+.nav-links li:last-child {
+  border-right: none;
+}
+
+/* 4. Định dạng thẻ <a> bên trong (tạo khoảng cách 2 bên vạch sọc) */
+.nav-links li a {
+  color: #2E4A32;                     /* Màu của icon */
+  font-size: 18px;
+  padding: 0 16px;                    /* Khoảng cách 2 bên vạch sọc cho thoáng */
+  display: inline-block;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+/* Hiệu ứng rê chuột vào icon */
+.nav-links li a:hover {
+  color: #E57373;                     /* Đổi màu hồng/cam nhẹ khi di chuột */
+}
+
+
+
+
+/* ===================================================
+   1. BẢNG DANH MỤC (GIỮ NGUYÊN CODE ĐẸP CỦA THÚY)
+   =================================================== */
+/* ===================================================
+   1. KHUNG CHỨA TỔNG (.banner) - DÍNH SÁT MÀN HÌNH
+   =================================================== */
+.banner {
+  display: flex;                  /* Kích hoạt flexbox nằm ngang */
+  width: 100%;                    /* Tràn 100% toàn bộ chiều rộng màn hình */
+  max-width: 100%;                /* Bỏ giới hạn 1200px cũ để dính sát 2 mép màn hình */
+  margin: 0;                      /* Xóa bỏ mọi khoảng trống lề bên ngoài */
+  padding: 0;                     /* Xóa bỏ lề bên trong */
+  gap: 0;                         /* XÓA KHOẢNG HỞ 30px -> Ép Danh mục và Banner dính liền vào nhau */
+  align-items: stretch;           /* Chiều cao Banner và Danh mục tự động bằng chằn chặn nhau */
+  box-sizing: border-box;
+  border-bottom: 3px solid #2E4A32; /* Dải đường kẻ xanh rêu đậm dày 3px chạy hết viền dưới */
+}
+
+/* ===================================================
+   2. DANH MỤC SẢN PHẨM - BÊN TRÁI
+   =================================================== */
+.category-section {
+  order: 1;                       /* Ép Danh mục nằm BÊN TRÁI */
+  width: 300px;                   /* Chiều rộng cố định của bảng */
+  flex-shrink: 0;                 /* Không bị co ép khi thu nhỏ màn hình */
+  margin: 0;
+  padding: 0;
+  /* THÊM ĐƯỜNG KẺ NẰM Ở BÊN PHẢI CỦA DANH MỤC */
+  border-right: 3px solid #2E4A32; /* Dải đường kẻ màu xanh rêu đậm, độ dày 3px */
+  box-sizing: border-box;         /* Giữ nguyên kích thước 300px không bị phình ra */
+}
+
+.category-table {
+  width: 100%;
+  height: 100%;                   /* Phủ kín chiều cao bằng với Banner */
+  border-collapse: collapse;      
+  background-color: #eff8e7;      /* Nền bảng màu xanh kem dịu nhẹ */
+  border: none !important;        /* Phẳng lì, không bo góc, không bóng đổ */
+  box-shadow: none !important;    
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; 
+}
+
+.category-table th {
+  background-color: #fcfbfb;      
+  color: #010e03;                 
+  padding: 16px 5px;
+  font-size: 19px;
+  font-weight: 700;
+  text-align: center;             
+  border-bottom: 2px solid #C8E6C9; 
+  letter-spacing: 0.5px;
+}
+
+.category-table td {
+  padding: 0;
+  border-bottom: 1px solid #E8E6DF; 
+}
+
+.category-table tr:last-child td {
+  border-bottom: none;
+}
+
+.category-table td a {
+  display: block;
+  padding: 16px 12px;             
+  color: #000804;                 
+  text-decoration: none;          
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;             
+  transition: all 0.25s ease;
+}
+
+.category-table td a:hover {
+  background-color: rgba(200, 230, 201, 0.2); 
+  color: #f861b4;                 
+  font-weight: 600;               
+}
+
+/* ===================================================
+   3. BANNER ẢNH - DÍNH SÁT BÊN PHẢI
+   =================================================== */
+.banner > a {
+  order: 2;                       /* Ép Banner nằm BÊN PHẢI */
+  flex: 1;                        /* Tự phình to phủ kín toàn bộ khoảng trống còn lại bên phải màn hình */
+  display: block;
+  margin: 0;
+  padding: 0;
+  border-radius: 0 !important;    /* GIỮ PHẲNG VUÔNG VỨC - KHÔNG BO GÓC */
+  overflow: hidden;
+}
+
+.banner img {
+  width: 100%;                    /* Ảnh phủ 100% chiều rộng */
+  height: 100%;                   /* Ảnh phủ 100% chiều cao */
+  object-fit: cover;              /* Đảm bảo ảnh tràn viền dính chặt không hở mép */
+  display: block;
+}
+
+
+/* ===================================================
+   1. CẤU TRÚC CHUNG CỦA CÁC KHU VỰC TRÊN TRANG CHỦ
+   =================================================== */
+
+/* Khung bọc khu vực Sách Bán Chạy & Top Sách Hot */
+.section-bestseller, 
+.section-hot {
+  background-color: #ffffff;          /* Nền trắng sạch sẽ */
+  border: 2px solid #C8E6C9;           /* Viền xanh bơ nhẹ nhàng bao quanh khu vực */
+  padding: 25px;                       /* Khoảng cách đệm bên trong khung */
+  margin-bottom: 30px;                 /* Khoảng cách giữa các khu vực với nhau */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); /* Bóng đổ rất nhẹ cho khung nổi bật */
+}
+
+/* Nền riêng cho khu vực TOP SÁCH HOT (nếu Thúy thích tông tím/hồng nhẹ như ảnh trước) */
+.section-hot {
+  background-color: #F4EBEF;          /* Nền màu tím nhạt thanh lịch */
+  border-color: #E8D7E0;               /* Viền tím xám nhẹ */
+}
+
+/* --- TIÊU ĐỀ KHU VỰC (h2) --- */
+.section-bestseller h2,
+.section-hot h2 {
+  color: #2E4A32;                      /* Chữ màu xanh rêu đậm Midori */
+  font-size: 22px;                     /* Kích thước chữ tiêu đề */
+  font-weight: bold;                   /* In đậm */
+  margin-top: 0;
+  margin-bottom: 20px;                 /* Khoảng cách từ tiêu đề xuống danh sách sách */
+  padding-bottom: 10px;                /* Khoảng cách từ chữ xuống đường gạch chân */
+  border-bottom: 2px solid #C8E6C9;    /* Đường gạch chân trang trí bên dưới tiêu đề */
+  text-transform: uppercase;           /* Tự động viết hoa chữ */
+  letter-spacing: 0.5px;               /* Dãn khoảng cách giữa các chữ cái */
+}
+
+/* Đổi màu tiêu đề riêng cho Top Sách Hot */
+.section-hot h2 {
+  color: #D32F2F;                      /* Tiêu đề màu đỏ/hồng gạch nổi bật */
+  border-bottom-color: #E0B0B8;        /* Đường gạch chân tông màu ăn khớp */
+}
+
+
+/* ===================================================
+   2. BỐ CỤC LƯỚI SẢN PHẨM (PRODUCT-GRID)
+   =================================================== */
+
+/* Lưới hiển thị danh sách sản phẩm */
+.product-grid {
+  display: grid;                       /* Sử dụng CSS Grid để chia cột tự động */
+  grid-template-columns: repeat(5, 1fr); /* Ép chia ĐỀU CHÍNH XÁC 5 CỘT nằm ngang */
+  gap: 20px;                           /* Khoảng cách giữa các ô sản phẩm */
+  padding: 0;                          /* Bỏ padding để ô căn chuẩn sát mép khung chứa */
+}
+
+
+/* ===================================================
+   3. THẺ TỪNG SẢN PHẨM (PRODUCT-CARD - Do JS sinh ra)
+   =================================================== */
+
+.product-card {
+  background-color: #ffffff;          /* Nền trắng cho từng ô sản phẩm */
+  border: 1.5px solid #C8E6C9;         /* Viền xanh bơ bao quanh ô sách */
+  border-radius: 8px;                  /* Bo nhẹ 8px cho góc thẻ mượt mà */
+  padding: 12px;                       /* Khoảng cách đệm bên trong thẻ sản phẩm */
+  text-align: center;                  /* Căn giữa toàn bộ Chữ, Ảnh và Nút */
+  display: flex;                       /* Dùng Flexbox xếp từ trên xuống */
+  flex-direction: column;              /* Bắt buộc xếp dọc (Ảnh -> Tên -> Giá -> Nút) */
+  justify-content: space-between;      /* Tự đẩy nút bấm xuống sát đáy dù tên sách dài hay ngắn */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng nổi lên mượt mà */
+}
+
+/* Hiệu ứng khi rê chuột vào thẻ sản phẩm */
+.product-card:hover {
+  transform: translateY(-5px);         /* Thẻ nhích nhẹ lên trên 5px */
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08); /* Đổ bóng đậm hơn chút để tạo độ nổi */
+}
+
+/* --- Ảnh bìa cuốn sách --- */
+.product-card img {
+  width: 100%;                         /* Ảnh dãn hết chiều rộng thẻ */
+  height: 180px;                       /* Chiều cao cố định để tất cả ảnh bằng chằn chặn nhau */
+  object-fit: cover;                   /* Cắt ảnh thông minh, không lo bị móp/méo hình */
+  border-radius: 6px;                  /* Bo nhẹ góc ảnh */
+  display: block;
+}
+
+/* --- Tên cuốn sách (h3) --- */
+.product-card h3 {
+  font-size: 15px;                     /* Độ to chữ tên sách */
+  color: #2E4A32;                      /* Chữ màu xanh rêu */
+  margin: 12px 0 6px 0;                /* Khoảng cách trên 12px, dưới 6px */
+  font-weight: 600;                    /* Chữ hơi dày lên cho dễ đọc */
+  line-height: 1.3;                    /* Khoảng cách giữa 2 dòng nếu tên dài */
+}
+
+/* --- Giá tiền (p hoặc .price) --- */
+.product-card .price, 
+.product-card p {
+  font-size: 14px;                     /* Kích thước chữ giá tiền */
+  color: #E57373;                      /* Màu hồng/cam gạch giúp giá tiền nổi bật */
+  font-weight: bold;                   /* In đậm giá tiền */
+  margin: 0 0 12px 0;                  /* Khoảng cách xuống nút bấm bên dưới */
+}
+
+/* --- Nút "Thêm vào giỏ" --- */
+.product-card .btn-add,
+.product-card .btn {
+  display: block;                      /* Nút phủ kín chiều rộng thẻ */
+  background-color: #C8E6C9;           /* Màu nền xanh bơ nhạt */
+  color: #2E4A32;                      /* Chữ màu xanh rêu đậm */
+  text-decoration: none;               /* Xóa bỏ gạch chân chữ */
+  padding: 10px 0;                     /* Độ dày trên/dưới của nút */
+  font-size: 13px;                     /* Size chữ trên nút */
+  font-weight: 600;                    /* Chữ in đậm */
+  border-radius: 6px;                  /* Bo góc nút bấm */
+  border: none;                        /* Bỏ viền mặc định của button */
+  cursor: pointer;                     /* Hiện con trỏ bàn tay khi rê vào */
+  transition: all 0.25s ease;          /* Hiệu ứng chuyển màu mượt mà */
+}
+
+/* Hiệu ứng di chuột vào Nút "Thêm vào giỏ" */
+.product-card .btn-add:hover,
+.product-card .btn:hover {
+  background-color: #2E4A32;           /* Đổi sang nền xanh rêu đậm */
+  color: #ffffff;                      /* Đổi chữ sang màu trắng */
+}
+
+
+
+/* --- FOOTER TỔNG THỂ --- */
+.site-footer {
+  background-color: #050002;      /* Nền kem pastel nhẹ nhàng */
+  border-top: 2px solid #eccbdf;  /* Đường viền xanh bơ ngăn cách với thân trang */
+  color: #333333;
+  margin-top: 50px;               /* Khoảng cách với phần nội dung trên */
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Khung chứa các cột */
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  flex-wrap: wrap;                 /* Tự xuống hàng nếu màn hình nhỏ */
+}
+
+/* Định dạng từng cột */
+.footer-col {
+  flex: 1;
+  min-width: 220px;
+}
+
+/* Tiêu đề các cột */
+.footer-col h3, .footer-col h4 {
+  color: #f7f8f7;                 /* Chữ xanh rêu */
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.footer-col p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #fcf6f6;
+  margin: 8px 0;
+}
+
+.footer-col a {
+  color: #b3ebb1;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+/* Danh sách link liên kết */
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  color: #faf6f6;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.25s ease;
+}
+
+/* Hiệu ứng rê chuột vào link */
+.footer-col ul li a:hover {
+  color: #f56ab6;
+  padding-left: 6px;              /* Nhích nhẹ sang phải */
+  font-weight: 600;
+}
+
+/* Dòng Copyright dưới cùng */
+.footer-bottom {
+  text-align: center;
+  background-color: #C8E6C9;      /* Nền xanh bơ nhạt */
+  padding: 12px 20px;
+  color: #2E4A32;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+
+
+
+/* ==========================================
+   KHU VỰC GIỚI THIỆU TIỆM MIDORI
+   ========================================== */
+.about-section {
+  background-color: #ffffff;
+  padding: 50px 20px;
+  margin-top: 40px;
+  border-top: 2px solid #C8E6C9;
+}
+
+.about-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* --- Phần 1: Đôi dòng câu chuyện --- */
+.about-story {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text .sub-title {
+  color: #88C057;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.about-text h2 {
+  color: #2E4A32;
+  font-size: 24px;
+  margin: 10px 0 18px 0;
+  font-weight: bold;
+}
+
+.about-text p {
+  color: #555555;
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.about-img {
+  width: 380px;
+  flex-shrink: 0;
+}
+
+.about-img img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border: 2px solid #C8E6C9;
+  box-shadow: 8px 8px 0px #C8E6C9; /* Hiệu ứng bóng đổ nét vuông cá tính */
+}
+
+/* --- PHONG CÁCH 1: QUY TRÌNH 3 BƯỚC --- */
+.making-process {
+  padding-top: 20px;
+  border-top: 1px dashed #C8E6C9;
+}
+
+.process-title {
+  text-align: center;
+  color: #2E4A32;
+  font-size: 18px;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.step-card {
+  background-color: #ffffff;
+  border: 1.5px solid #C8E6C9;
+  padding: 20px 15px;
+  text-align: center;
+  position: relative;
+}
+
+.step-num {
+  display: inline-block;
+  background-color: #C8E6C9;
+  color: #2E4A32;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 3px 10px;
+  margin-bottom: 10px;
+}
+
+.step-card h4 {
+  color: #2E4A32;
+  font-size: 15px;
+  margin: 5px 0;
+  font-weight: 600;
+}
+
+.step-card p {
+  color: #666;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+
+
+/* --- PHONG CÁCH 2: THÔNG ĐIỆP NHẮN GỬI --- */
+
+.note-content i {
+  font-size: 18px;                /* Kích thước vừa xinh */
+  margin: 0 6px 15px 6px;         /* Tạo khoảng cách giữa các icon và với dòng chữ dưới */
+  transition: transform 0.3s ease;
+}
+
+/* Màu riêng cho từng Icon */
+.note-content .fa-heart {
+  color: #E57373;                 /* Trái tim màu hồng/cam gạch */
+}
+
+.note-content .fa-star {
+  color: #FBC02D;                 /* Ngôi sao màu vàng ấm */
+}
+
+.note-content .fa-leaf {
+  color: #74c032;                 /* Chiếc lá màu xanh bơ */
+}
+
+.note-quote {
+  font-family: 'Segoe UI', Georgia, serif;
+  font-size: 16px;
+  font-style: italic;
+  color: #2E4A32;
+  line-height: 1.6;
+  margin: 0 0 10px 0;
+}
+
+.note-author {
+  font-size: 13px;
+  color: #88C057;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+

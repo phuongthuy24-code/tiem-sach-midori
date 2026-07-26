@@ -1,0 +1,444 @@
+/* Đổi màu nền cho toàn bộ trang web */
+body {
+  background-color: #d8c0cb; /* có thể thay mã màu khác vào đây */
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Đẩy logo, ô tìm kiếm và menu ra 3 góc đều nhau */
+  align-items: center;            /* Căn giữa các phần tử theo chiều dọc */
+  background-color: #fffdfd;      /* Màu nền kem sữa nhẹ nhàng */
+  padding: 10px 40px;             /* Khoảng cách trên-dưới 15px, trái-phải 40px */
+  border-bottom: 2px solid #0c0a02;/* Viền mỏng bên dưới */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- 2. Kiểu dáng cho Logo --- */
+.logo {
+  display: flex;
+  align-items: center;       /* Căn giữa theo chiều dọc */
+  gap: 10px;                 /* Khoảng cách giữa ảnh logo và chữ MIDORI */
+  text-decoration: none;
+  color: #2E4A32;
+  font-weight: bold;
+  font-size: 20px;
+}
+/* Định dạng Ảnh Logo Tròn */
+.logo-img {
+  width: 600px;               /* Chiều rộng logo (Thúy có thể chỉnh 40px - 50px tùy thích) */
+  height: 90px;              /* Chiều cao bằng chiều rộng */
+  object-fit: cover;
+  border-radius: 0;        /* Đảm bảo logo luôn tròn xoe */
+  transition: transform 0.3s ease;
+}
+
+/* --- 3. Kiểu dáng Ô tìm kiếm (Search Box) --- */
+/* --- Ô TÌM KIẾM BO TRÒN HIỆN ĐẠI & MƯỢT MÀ --- */
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1.5px solid #2E4A32;     /* Viền xanh rêu cùng màu với Logo MIDORI */
+  border-radius: 20px;            /* BO TRÒN MƯỢT MÀ 2 ĐẦU */
+  padding: 3px 6px 3px 15px;      /* Khoảng cách chữ lùi vào trong */
+  width: 320px;                   /* Độ rộng vừa vặn, cân đối */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03); /* Bóng đổ siêu nhẹ tạo chiều sâu */
+  transition: all 0.3s ease;
+}
+
+/* Hiệu ứng khi bấm/rê chuột vào ô tìm kiếm */
+.search-box:focus-within {
+  border-color: #182011;         /* Đổi viền sang màu xanh bơ tươi */
+  box-shadow: 0 3px 10px rgba(136, 192, 87, 0.2);
+}
+
+/* Khung nhập chữ (Input) */
+.search-box input {
+  border: none !important;        /* BỎ HOÀN TOÀN VIỀN RIÊNG */
+  outline: none !important;       /* Bỏ viền xanh mặc định của trình duyệt */
+  background: transparent;
+  width: 100%;
+  font-size: 13.5px;
+  color: #2E4A32;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Chữ gợi ý mờ (Placeholder) */
+.search-box input::placeholder {
+  color: #9E9E9E;
+  font-style: italic;             /* Chữ in nghiêng nhẹ dịu mắt */
+}
+
+/* Nút bấm Kính Lúp */
+.search-box button {
+  background: transparent;        /* Bỏ màu nền xanh vuông cũ */
+  border: none !important;        /* Bỏ viền nút */
+  color: #010702;                 /* Màu kính lúp xanh rêu */
+  font-size: 14px;
+  padding: 6px 10px;
+  cursor: pointer;                /* Hiện bàn tay khi di chuột vào */
+  transition: transform 0.2s ease, color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hiệu ứng kính lúp khi hover */
+.search-box button:hover {
+  color: #fa87b7;                 /* Đổi màu kính lúp sang xanh tươi */
+  transform: scale(1.15);         /* Kính lúp phóng to nhẹ cực thích mắt */
+}
+
+/* 1. Xóa chấm tròn danh sách & xếp các icon nằm ngang */
+.nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none; /* Bỏ chấm tròn mặc định của <ul> */
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. Tạo vạch sọc dọc cho từng thẻ <li> */
+.nav-links li {
+  /* VẠCH SỌC ĐỨNG NGĂN CÁCH */
+  border-right: 1.5px solid #2E4A32; /* Sọc đứng màu xanh rêu (Thúy có thể đổi thành #000000 nếu thích màu đen tuyền) */
+  line-height: 1;                     /* Giúp chiều cao vạch sọc vừa vặn với icon */
+}
+
+/* 3. BỎ vạch sọc ở icon CUỐI CÙNG cho chuẩn giao diện */
+.nav-links li:last-child {
+  border-right: none;
+}
+
+/* 4. Định dạng thẻ <a> bên trong (tạo khoảng cách 2 bên vạch sọc) */
+.nav-links li a {
+  color: #2E4A32;                     /* Màu của icon */
+  font-size: 18px;
+  padding: 0 16px;                    /* Khoảng cách 2 bên vạch sọc cho thoáng */
+  display: inline-block;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+/* Hiệu ứng rê chuột vào icon */
+.nav-links li a:hover {
+  color: #E57373;                     /* Đổi màu hồng/cam nhẹ khi di chuột */
+}
+
+
+
+/* ===================================================
+   TRANG LIÊN HỆ & GÓC CẢM NHẬN - TIỆM SÁCH MIDORI
+   =================================================== */
+
+/* Layout Toàn Màn Hình */
+.contact-container {
+    max-width: 95%; /* Mở rộng tối đa 95% màn hình */
+    margin: 30px auto;
+    padding: 0 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Chia 2 cột bằng nhau */
+    gap: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.box-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eef2f5;
+    display: flex;
+    flex-direction: column;
+    height: 580px; /* Cố định chiều cao 2 cột bằng chằn chặn */
+    box-sizing: border-box;
+}
+
+.box-title {
+    color: #0b5345;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid #e8f8f5;
+    padding-bottom: 12px;
+}
+
+.box-title i {
+    color: #26aa99;
+}
+
+
+/* ===================================================
+   1. CỘT TRÁI: GÓC CẢM NHẬN
+   =================================================== */
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.review-form input, 
+.review-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.review-form input:focus, 
+.review-form textarea:focus {
+    border-color: #ee4d2d;
+}
+
+.review-form button {
+    background: #ee4d2d;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background 0.2s;
+}
+
+.review-form button:hover {
+    background: #d73211;
+}
+
+.reviews-list {
+    flex: 1; /* Tự động dãn kín chiều cao còn lại */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 5px;
+}
+
+.review-card {
+    background: #fff8f6;
+    border-left: 4px solid #ee4d2d;
+    padding: 12px 15px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+.review-card h5 {
+    margin: 0 0 5px 0;
+    color: #222;
+    font-size: 15px;
+}
+
+.review-card small {
+    color: #777;
+    font-size: 12px;
+}
+
+.review-card p {
+    margin: 8px 0 0 0;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.4;
+    font-style: italic;
+}
+
+
+/* ===================================================
+   2. CỘT PHẢI: KHUNG CHAT LIVE
+   =================================================== */
+.chat-messages {
+    flex: 1; /* Tự động dãn kín chiều cao còn lại */
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    border-radius: 8px;
+    background: #fcfcfc;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.chat-messages::-webkit-scrollbar,
+.reviews-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb,
+.reviews-list::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+.msg {
+    max-width: 75%;
+    padding: 10px 14px;
+    border-radius: 15px;
+    font-size: 14px;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.msg.user {
+    background: #26aa99;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+
+.msg.shop {
+    background: #eef2f5;
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+
+.chat-input-box {
+    display: flex;
+    gap: 10px;
+}
+
+.chat-input-box input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+}
+
+.chat-input-box input:focus {
+    border-color: #26aa99;
+}
+
+.chat-input-box button {
+    background: #26aa99;
+    color: white;
+    border: none;
+    padding: 0 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.chat-input-box button:hover {
+    background: #1d8274;
+}
+
+
+/* Responsive trên điện thoại */
+@media (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+    .box-card {
+        height: auto;
+    }
+    .reviews-list, .chat-messages {
+        height: 300px;
+    }
+}
+
+
+
+/* --- FOOTER TỔNG THỂ --- */
+.site-footer {
+  background-color: #050002;      /* Nền kem pastel nhẹ nhàng */
+  border-top: 2px solid #eccbdf;  /* Đường viền xanh bơ ngăn cách với thân trang */
+  color: #333333;
+  margin-top: 50px;               /* Khoảng cách với phần nội dung trên */
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Khung chứa các cột */
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  flex-wrap: wrap;                 /* Tự xuống hàng nếu màn hình nhỏ */
+}
+
+/* Định dạng từng cột */
+.footer-col {
+  flex: 1;
+  min-width: 220px;
+}
+
+/* Tiêu đề các cột */
+.footer-col h3, .footer-col h4 {
+  color: #f7f8f7;                 /* Chữ xanh rêu */
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.footer-col p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #fcf6f6;
+  margin: 8px 0;
+}
+
+.footer-col a {
+  color: #b3ebb1;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+/* Danh sách link liên kết */
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  color: #faf6f6;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.25s ease;
+}
+
+/* Hiệu ứng rê chuột vào link */
+.footer-col ul li a:hover {
+  color: #f56ab6;
+  padding-left: 6px;              /* Nhích nhẹ sang phải */
+  font-weight: 600;
+}
+
+/* Dòng Copyright dưới cùng */
+.footer-bottom {
+  text-align: center;
+  background-color: #C8E6C9;      /* Nền xanh bơ nhạt */
+  padding: 12px 20px;
+  color: #2E4A32;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+
+

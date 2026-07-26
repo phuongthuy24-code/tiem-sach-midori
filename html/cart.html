@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiệm sách Midori</title>
+    <link rel = "stylesheet" href="css/cart.css" >
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body background="images/background1.jpg" style="background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
+    <header>
+        <nav class = "navbar">
+            <a href = "index.html" class = "logo" >
+                <img src = "images/logo.png" alt = "Logo Midori" class = "logo-img" >
+            </a>
+            <form action="#" method="get" class = "search-box">
+                <input type = "text" placeholder = "Midori tìm cho bạn..." >
+                <button type = "submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <ul class = "nav-links">
+                <li><a href = "index.html" class="nav-item active" ><i class="fa-solid fa-house"></i></a></li>
+                <li><a href = "products.html"><i class="fa-solid fa-box-open"></i></a></li>
+                <li><a href = "cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li><a href = "contact.html"><i class="fa-solid fa-phone"></i></a></li>
+                <li><a href = "login.html"><i class="fa-solid fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <main class="cart-page">
+        <div class="cart-container">
+            
+            <!-- 1. KHUNG GIỎ HÀNG TRỐNG (Mặc định ẩn, chỉ hiện khi giỏ trống) -->
+            <div id="empty-cart" class="empty-cart-container" style="display: none;">
+                <div class="empty-icon">
+                    <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="45" fill="#E8F5E9"/>
+                        <path d="M32 38H68L64 72H36L32 38Z" stroke="#2E4A32" stroke-width="3" stroke-linejoin="round"/>
+                        <path d="M41 38V30C41 25.0294 45.0294 21 50 21C54.9706 21 59 25.0294 59 30V38" stroke="#2E4A32" stroke-width="3"/>
+                    </svg>
+                </div>
+                <p class="empty-text">Giỏ hàng của bạn còn trống</p>
+                <a href="index.html" class="btn-buy-now">MUA NGAY</a>
+            </div>
+
+            <!-- 2. NỘI DUNG GIỎ HÀNG (Chỉ hiện khi CÓ sản phẩm) -->
+            <div id="cart-content">
+                <!-- Thanh tiêu đề bảng -->
+                <div class="cart-header">
+                    <div class="col-check"><input type="checkbox" id="check-all"></div>
+                    <div class="col-product">Sản Phẩm</div>
+                    <div class="col-price">Đơn Giá</div>
+                    <div class="col-quantity">Số Lượng</div>
+                    <div class="col-total">Số Tiền</div>
+                    <div class="col-action">Thao Tác</div>
+                </div>
+
+                <!-- Danh sách sản phẩm -->
+                <div id="cart-items-list" class="cart-list"></div>
+
+                <!-- Thanh thanh toán dưới cùng -->
+                <div class="cart-footer">
+                    <div class="footer-left">
+                        <label><input type="checkbox" id="check-all-footer"> Chọn Tất Cả (<span id="total-count">0</span>)</label>
+                        <button id="btn-delete-selected" class="btn-link">Xóa</button>
+                    </div>
+                    
+                    <div class="footer-right">
+                        <div class="total-summary">
+                            Tổng cộng (<span id="selected-count">0</span> sản phẩm): 
+                            <span id="total-price" class="total-price">0₫</span>
+                        </div>
+                        <button id="checkout-button" class="btn-checkout">Mua Hàng</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+
+
+    <footer class="site-footer">
+        <div class="footer-container">
+    
+    <!-- Cột 1: Giới thiệu tiệm -->
+        <div class="footer-col">
+            <h3>Tiệm Nhỏ Midori</h3>
+            <p>Chuyên phụ kiện cườm, vòng tay và trang sức thủ công xinh xắn mang đến niềm vui nhỏ mỗi ngày cho bạn.</p>
+        </div>
+
+    <!-- Cột 2: Điều hướng nhanh -->
+        <div class="footer-col">
+            <h4>Liên Kết Nhanh</h4>
+            <ul>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="products.html">Sản Phẩm</a></li>
+                <li><a href="cart.html">Giỏ Hàng</a></li>
+                <li><a href="#">Liên Hệ</a></li>
+            </ul>
+        </div>
+
+        <!-- Cột 3: Thông tin liên hệ -->
+        <div class="footer-col">
+            <h4>Thông Tin Liên Hệ</h4>
+            <p>📍 Địa chỉ: Hà Nội, Việt Nam</p>
+            <p>📞 Hotline/Zalo: 0987 654 321</p>
+            <p>💬 Facebook: <a href="https://www.facebook.com/tiemnhomidori" target="_blank">Tiệm Nhỏ Midori</a></p>
+            <p>✉️ Email: tiemnhomidori@gmail.com</p>
+        </div>
+
+    <!-- Dòng bản quyền dưới cùng -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 Tiệm Nhỏ Midori. All rights reserved.</p>
+        </div>
+    </footer>
+<script src="js/cart.js"></script>
+</body>
+</html>

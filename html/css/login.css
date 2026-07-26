@@ -1,0 +1,370 @@
+body {
+  background-color: #d8c0cb; /* có thể thay mã màu khác vào đây */
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Đẩy logo, ô tìm kiếm và menu ra 3 góc đều nhau */
+  align-items: center;            /* Căn giữa các phần tử theo chiều dọc */
+  background-color: #fffdfd;      /* Màu nền kem sữa nhẹ nhàng */
+  padding: 10px 40px;             /* Khoảng cách trên-dưới 15px, trái-phải 40px */
+  border-bottom: 2px solid #0c0a02;/* Viền mỏng bên dưới */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- 2. Kiểu dáng cho Logo --- */
+.logo {
+  display: flex;
+  align-items: center;       /* Căn giữa theo chiều dọc */
+  gap: 10px;                 /* Khoảng cách giữa ảnh logo và chữ MIDORI */
+  text-decoration: none;
+  color: #2E4A32;
+  font-weight: bold;
+  font-size: 20px;
+}
+/* Định dạng Ảnh Logo Tròn */
+.logo-img {
+  width: 600px;               /* Chiều rộng logo (Thúy có thể chỉnh 40px - 50px tùy thích) */
+  height: 90px;              /* Chiều cao bằng chiều rộng */
+  object-fit: cover;
+  border-radius: 0;        /* Đảm bảo logo luôn tròn xoe */
+  transition: transform 0.3s ease;
+}
+
+/* --- 3. Kiểu dáng Ô tìm kiếm (Search Box) --- */
+/* --- Ô TÌM KIẾM BO TRÒN HIỆN ĐẠI & MƯỢT MÀ --- */
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1.5px solid #2E4A32;     /* Viền xanh rêu cùng màu với Logo MIDORI */
+  border-radius: 20px;            /* BO TRÒN MƯỢT MÀ 2 ĐẦU */
+  padding: 3px 6px 3px 15px;      /* Khoảng cách chữ lùi vào trong */
+  width: 320px;                   /* Độ rộng vừa vặn, cân đối */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03); /* Bóng đổ siêu nhẹ tạo chiều sâu */
+  transition: all 0.3s ease;
+}
+
+/* Hiệu ứng khi bấm/rê chuột vào ô tìm kiếm */
+.search-box:focus-within {
+  border-color: #182011;         /* Đổi viền sang màu xanh bơ tươi */
+  box-shadow: 0 3px 10px rgba(136, 192, 87, 0.2);
+}
+
+/* Khung nhập chữ (Input) */
+.search-box input {
+  border: none !important;        /* BỎ HOÀN TOÀN VIỀN RIÊNG */
+  outline: none !important;       /* Bỏ viền xanh mặc định của trình duyệt */
+  background: transparent;
+  width: 100%;
+  font-size: 13.5px;
+  color: #2E4A32;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Chữ gợi ý mờ (Placeholder) */
+.search-box input::placeholder {
+  color: #9E9E9E;
+  font-style: italic;             /* Chữ in nghiêng nhẹ dịu mắt */
+}
+
+/* Nút bấm Kính Lúp */
+.search-box button {
+  background: transparent;        /* Bỏ màu nền xanh vuông cũ */
+  border: none !important;        /* Bỏ viền nút */
+  color: #010702;                 /* Màu kính lúp xanh rêu */
+  font-size: 14px;
+  padding: 6px 10px;
+  cursor: pointer;                /* Hiện bàn tay khi di chuột vào */
+  transition: transform 0.2s ease, color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hiệu ứng kính lúp khi hover */
+.search-box button:hover {
+  color: #fa87b7;                 /* Đổi màu kính lúp sang xanh tươi */
+  transform: scale(1.15);         /* Kính lúp phóng to nhẹ cực thích mắt */
+}
+
+/* 1. Xóa chấm tròn danh sách & xếp các icon nằm ngang */
+.nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none; /* Bỏ chấm tròn mặc định của <ul> */
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. Tạo vạch sọc dọc cho từng thẻ <li> */
+.nav-links li {
+  /* VẠCH SỌC ĐỨNG NGĂN CÁCH */
+  border-right: 1.5px solid #2E4A32; /* Sọc đứng màu xanh rêu (Thúy có thể đổi thành #000000 nếu thích màu đen tuyền) */
+  line-height: 1;                     /* Giúp chiều cao vạch sọc vừa vặn với icon */
+}
+
+/* 3. BỎ vạch sọc ở icon CUỐI CÙNG cho chuẩn giao diện */
+.nav-links li:last-child {
+  border-right: none;
+}
+
+/* 4. Định dạng thẻ <a> bên trong (tạo khoảng cách 2 bên vạch sọc) */
+.nav-links li a {
+  color: #2E4A32;                     /* Màu của icon */
+  font-size: 18px;
+  padding: 0 16px;                    /* Khoảng cách 2 bên vạch sọc cho thoáng */
+  display: inline-block;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+/* Hiệu ứng rê chuột vào icon */
+.nav-links li a:hover {
+  color: #E57373;                     /* Đổi màu hồng/cam nhẹ khi di chuột */
+}
+
+
+
+/* ===================================================
+   1. KHUNG TỔNG TRÀN MÀN HÌNH (ĐẨY KHUNG SANG PHẢI)
+   =================================================== */
+.login-wrapper {
+  display: flex;
+  justify-content: flex-end;      /* ĐẨY KHUNG ĐĂNG NHẬP SANG HẲN BÊN PHẢI */
+  width: 100%;
+  min-height: calc(100vh - 120px); /* Tự co giãn theo chiều cao màn hình */
+  box-sizing: border-box;
+}
+
+/* ===================================================
+   2. KHUNG ĐĂNG NHẬP / ĐĂNG KÝ BÊN PHẢI
+   =================================================== */
+.auth-box {
+  width: 420px;                   /* Độ rộng vừa vặn cho khung bên phải */
+  max-width: 100%;
+  background-color: #ffffff;      /* Nền trắng đục phẳng lì */
+  padding: 40px 35px;
+  box-sizing: border-box;
+  border-left: 3px solid #2E4A32;  /* Đường viền dọc màu xanh rêu bên trái */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 3px solid #2E4A32;     /* Đường viền ngang màu xanh rêu bên dưới */
+}
+
+/* ===================================================
+   3. CÁC NÚT TAB CHUYỂN ĐỔI (ĐĂNG NHẬP / ĐĂNG KÝ)
+   =================================================== */
+.auth-tabs {
+  display: flex;
+  border-bottom: 2px solid #E8E6DF;
+  margin-bottom: 25px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 12px 0;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  color: #888888;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;             /* Dính sát đường kẻ ngang */
+}
+
+/* Tab đang được chọn (Active) */
+.tab-btn.active {
+  color: #2E4A32;                 /* Màu xanh rêu đậm Midori */
+  border-bottom: 3px solid #2E4A32;
+}
+
+/* ===================================================
+   4. ẨN / HIỆN FORM & CÁC Ô NHẬP LIỆU (VUÔNG VỨC)
+   =================================================== */
+.auth-form {
+  display: none;                  /* Mặc định ẩn tất cả form */
+}
+
+.auth-form.active {
+  display: block;                 /* Chỉ hiện form nào có class "active" */
+}
+
+.welcome-text {
+  color: #666666;
+  font-size: 13.5px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2E4A32;
+  margin-bottom: 6px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 11px 12px;
+  font-size: 14px;
+  border: 1px solid #C8E6C9;
+  border-radius: 0 !important;    /* PHẲNG LÌ - KHÔNG BO GÓC */
+  outline: none;
+  background-color: #FAFAFA;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: #2E4A32;
+  background-color: #ffffff;
+}
+
+/* Ghi nhớ & Quên mật khẩu */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 20px;
+  color: #555555;
+}
+
+.forgot-pass {
+  color: #2E4A32;
+  text-decoration: none;
+}
+
+.forgot-pass:hover {
+  text-decoration: underline;
+}
+
+/* Nút Bấm Đăng Nhập / Tạo Tài Khoản */
+.btn-submit {
+  width: 100%;
+  padding: 13px;
+  background-color: #2E4A32;
+  color: #ffffff;
+  border: none;
+  border-radius: 0 !important;    /* VUÔNG VỨC - KHÔNG BO GÓC */
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.btn-submit:hover {
+  background-color: #3A5A3F;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- FOOTER TỔNG THỂ --- */
+.site-footer {
+  background-color: #050002;      /* Nền kem pastel nhẹ nhàng */
+  border-top: 2px solid #eccbdf;  /* Đường viền xanh bơ ngăn cách với thân trang */
+  color: #333333;
+  margin-top: 50px;               /* Khoảng cách với phần nội dung trên */
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Khung chứa các cột */
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  flex-wrap: wrap;                 /* Tự xuống hàng nếu màn hình nhỏ */
+}
+
+/* Định dạng từng cột */
+.footer-col {
+  flex: 1;
+  min-width: 220px;
+}
+
+/* Tiêu đề các cột */
+.footer-col h3, .footer-col h4 {
+  color: #f7f8f7;                 /* Chữ xanh rêu */
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.footer-col p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #fcf6f6;
+  margin: 8px 0;
+}
+
+.footer-col a {
+  color: #b3ebb1;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+/* Danh sách link liên kết */
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  color: #faf6f6;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.25s ease;
+}
+
+/* Hiệu ứng rê chuột vào link */
+.footer-col ul li a:hover {
+  color: #f56ab6;
+  padding-left: 6px;              /* Nhích nhẹ sang phải */
+  font-weight: 600;
+}
+
+/* Dòng Copyright dưới cùng */
+.footer-bottom {
+  text-align: center;
+  background-color: #C8E6C9;      /* Nền xanh bơ nhạt */
+  padding: 12px 20px;
+  color: #2E4A32;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.footer-bottom p {
+  margin: 0;
+}

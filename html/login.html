@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiệm sách Midori</title>
+    <link rel = "stylesheet" href="css/login.css" >
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body background="images/backgroundlogin.jpg" style="background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
+    <header>
+        <nav class = "navbar">
+            <a href = "index.html" class = "logo" >
+                <img src = "images/logo.png" alt = "Logo Midori" class = "logo-img" >
+            </a>
+            <form action="#" method="get" class = "search-box">
+                <input type = "text" placeholder = "Midori tìm cho bạn..." >
+                <button type = "submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <ul class = "nav-links">
+                <li><a href = "index.html" class="nav-item active" ><i class="fa-solid fa-house"></i></a></li>
+                <li><a href = "products.html"><i class="fa-solid fa-box-open"></i></a></li>
+                <li><a href = "cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li><a href = "contact.html"><i class="fa-solid fa-phone"></i></a></li>
+                <li><a href = "login.html"><i class="fa-solid fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <main>
+        <section class="login-wrapper">
+            <div class="auth-box">
+            
+            <!-- 1. CÁC NÚT BẤM CHUYỂN TAB -->
+                <div class="auth-tabs">
+                    <!-- Thêm id="tab-login" và id="tab-register" -->
+                    <button id="tab-login" class="tab-btn active">ĐĂNG NHẬP</button>
+                    <button id="tab-register" class="tab-btn">ĐĂNG KÝ</button>
+                </div>
+
+                <!-- 2. FORM ĐĂNG NHẬP (Mặc định thêm class "active" để hiện ra trước) -->
+                <div id="login-form" class="auth-form active">
+                    <p class="welcome-text">Mời bạn đăng nhập để tiếp tục mua sách 🌿</p>
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label>Email / Tên đăng nhập</label>
+                            <input type="text" placeholder="Nhập email hoặc tên đăng nhập..." required>
+                        </div>
+                        <div class="form-group">
+                            <label>Mật khẩu</label>
+                            <input type="password" placeholder="Nhập mật khẩu..." required>
+                        </div>
+                        <div class="form-options">
+                            <label><input type="checkbox"> Ghi nhớ đăng nhập</label>
+                            <a href="#" class="forgot-pass">Quên mật khẩu?</a>
+                        </div>
+                        <button type="submit" class="btn-submit">ĐĂNG NHẬP</button>
+                    </form>
+                </div>
+
+        <!-- 3. FORM ĐĂNG KÝ (Không có class "active" nên sẽ ẩn đi) -->
+                <div id="register-form" class="auth-form">
+                    <p class="welcome-text">Tạo tài khoản mới để nhận ưu đãi từ Midori 🌸</p>
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label>Họ và tên</label>
+                            <input type="text" placeholder="Nhập họ và tên..." required>
+                        </div>
+                        <div class="form-group">
+                            <label>Số điện thoại</label>
+                            <input type="tel" placeholder="Nhập số điện thoại..." required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="Nhập địa chỉ email..." required>
+                        </div>
+                        <div class="form-group">
+                            <label>Mật khẩu</label>
+                            <input type="password" placeholder="Tạo mật khẩu..." required>
+                        </div>
+                        <button type="submit" class="btn-submit">TẠO TÀI KHOẢN</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+
+    <footer class="site-footer">
+        <div class="footer-container">
+    
+    <!-- Cột 1: Giới thiệu tiệm -->
+        <div class="footer-col">
+            <h3>Tiệm Nhỏ Midori</h3>
+            <p>Chuyên phụ kiện cườm, vòng tay và trang sức thủ công xinh xắn mang đến niềm vui nhỏ mỗi ngày cho bạn.</p>
+        </div>
+
+    <!-- Cột 2: Điều hướng nhanh -->
+        <div class="footer-col">
+            <h4>Liên Kết Nhanh</h4>
+            <ul>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="products.html">Sản Phẩm</a></li>
+                <li><a href="cart.html">Giỏ Hàng</a></li>
+                <li><a href="#">Liên Hệ</a></li>
+            </ul>
+        </div>
+
+        <!-- Cột 3: Thông tin liên hệ -->
+        <div class="footer-col">
+            <h4>Thông Tin Liên Hệ</h4>
+            <p>📍 Địa chỉ: Hà Nội, Việt Nam</p>
+            <p>📞 Hotline/Zalo: 0987 654 321</p>
+            <p>💬 Facebook: <a href="https://www.facebook.com/tiemnhomidori" target="_blank">Tiệm Nhỏ Midori</a></p>
+            <p>✉️ Email: tiemnhomidori@gmail.com</p>
+        </div>
+
+    <!-- Dòng bản quyền dưới cùng -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 Tiệm Nhỏ Midori. All rights reserved.</p>
+        </div>
+    </footer>
+<script src="js/login.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Chat - Admin Tiệm Sách Midori</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eef2f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .admin-dashboard {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            display: grid;
+            grid-template-columns: 320px 1fr; /* Cột trái 320px, Cột phải dãn hết */
+            height: 600px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* --- CỘT TRÁI: DANH SÁCH KHÁCH HÀNG --- */
+        .sidebar-customers {
+            border-right: 1px solid #eee;
+            background: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            padding: 15px;
+            background: #0b5345;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .customer-list {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .customer-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .customer-item:hover, .customer-item.active {
+            background: #e8f8f5;
+        }
+
+        .customer-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #26aa99;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .customer-info h4 {
+            margin: 0 0 4px 0;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .customer-info p {
+            margin: 0;
+            font-size: 12px;
+            color: #888;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 180px;
+        }
+
+        /* --- CỘT PHẢI: KHUNG CHAT CHI TIẾT --- */
+        .chat-area {
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+        }
+
+        .chat-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            background: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h3 {
+            margin: 0;
+            font-size: 16px;
+            color: #0b5345;
+        }
+
+        .chat-messages-box {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #fcfcfc;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .msg-row {
+            display: flex;
+            flex-direction: column;
+            max-width: 70%;
+        }
+
+        .msg-row.user { align-self: flex-start; }
+        .msg-row.shop { align-self: flex-end; }
+
+        .msg-bubble {
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .msg-row.user .msg-bubble {
+            background: #eef2f5;
+            color: #333;
+            border-bottom-left-radius: 2px;
+        }
+
+        .msg-row.shop .msg-bubble {
+            background: #26aa99;
+            color: white;
+            border-bottom-right-radius: 2px;
+        }
+
+        .msg-time {
+            font-size: 10px;
+            color: #aaa;
+            margin-top: 3px;
+        }
+
+        .chat-input-area {
+            padding: 15px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        .chat-input-area button {
+            background: #0b5345;
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .empty-select {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="admin-dashboard">
+        <!-- CỘT TRÁI: DANH SÁCH KHÁCH -->
+        <div class="sidebar-customers">
+            <div class="sidebar-header">
+                <i class="fa-solid fa-comments"></i> Hộp Thư Khách Hàng
+            </div>
+            <div class="customer-list" id="customerList">
+                <!-- Danh sách khách hiển thị ở đây -->
+            </div>
+        </div>
+
+        <!-- CỘT PHẢI: CHI TIẾT CONVERSATION -->
+        <div class="chat-area">
+            <div class="chat-header">
+                <h3 id="currentCustomerTitle">Chọn một khách hàng để xem tin nhắn</h3>
+            </div>
+
+            <div class="chat-messages-box" id="adminChatBox">
+                <div class="empty-select">
+                    <i class="fa-regular fa-paper-plane" style="font-size: 40px; margin-bottom: 10px;"></i>
+                    <p>Chọn khách hàng bên cột trái để bắt đầu chat</p>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <input type="text" id="adminInput" placeholder="Nhập câu trả lời..." onkeypress="if(event.key==='Enter') sendReply()">
+                <button onclick="sendReply()"><i class="fa-solid fa-paper-plane"></i> Trả Lời</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentCustomerId = null;
+
+        document.addEventListener('DOMContentLoaded', function () {
+            renderCustomerList();
+
+            // Lắng nghe khi có tin nhắn mới từ Khách
+            window.addEventListener('storage', function (e) {
+                if (e.key === 'midori_chat_data') {
+                    renderCustomerList();
+                    if (currentCustomerId) renderMessages(currentCustomerId);
+                }
+            });
+        });
+
+        // Đổ danh sách khách hàng ra cột trái
+        function renderCustomerList() {
+            const customerList = document.getElementById('customerList');
+            let allChatData = JSON.parse(localStorage.getItem('midori_chat_data')) || {};
+            let keys = Object.keys(allChatData);
+
+            if (keys.length === 0) {
+                customerList.innerHTML = `<div style="padding: 20px; text-align: center; color: #888; font-size: 13px;">Chưa có khách nào nhắn tin</div>`;
+                return;
+            }
+
+            let html = '';
+            keys.forEach(id => {
+                let cust = allChatData[id];
+                let lastMsg = cust.messages[cust.messages.length - 1] ? cust.messages[cust.messages.length - 1].text : '---';
+                let activeClass = (id === currentCustomerId) ? 'active' : '';
+
+                html += `
+                    <div class="customer-item ${activeClass}" onclick="selectCustomer('${id}')">
+                        <div class="customer-avatar">${cust.customerName.charAt(0).toUpperCase()}</div>
+                        <div class="customer-info">
+                            <h4>${cust.customerName}</h4>
+                            <p>${lastMsg}</p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            customerList.innerHTML = html;
+        }
+
+        // Chọn một khách hàng để chat
+        function selectCustomer(id) {
+            currentCustomerId = id;
+            renderCustomerList(); // Update highlight
+            renderMessages(id);
+        }
+
+        // Đổ tin nhắn của khách đang chọn ra cột phải
+        function renderMessages(id) {
+            const chatBox = document.getElementById('adminChatBox');
+            const title = document.getElementById('currentCustomerTitle');
+
+            let allChatData = JSON.parse(localStorage.getItem('midori_chat_data')) || {};
+            let cust = allChatData[id];
+
+            if (!cust) return;
+
+            title.innerText = `💬 Đang chat với: ${cust.customerName}`;
+
+            let html = '';
+            cust.messages.forEach(msg => {
+                let isUser = msg.sender === 'user';
+                html += `
+                    <div class="msg-row ${isUser ? 'user' : 'shop'}">
+                        <div class="msg-bubble">${msg.text}</div>
+                        <span class="msg-time">${msg.time || ''}</span>
+                    </div>
+                `;
+            });
+
+            chatBox.innerHTML = html;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        // Admin gõ trả lời
+        function sendReply() {
+            if (!currentCustomerId) {
+                alert('Thúy chọn một khách hàng bên cột trái trước nhé!');
+                return;
+            }
+
+            const input = document.getElementById('adminInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            let allChatData = JSON.parse(localStorage.getItem('midori_chat_data')) || {};
+
+            if (allChatData[currentCustomerId]) {
+                allChatData[currentCustomerId].messages.push({
+                    sender: 'shop',
+                    text: text,
+                    time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                });
+
+                localStorage.setItem('midori_chat_data', JSON.stringify(allChatData));
+                input.value = '';
+                renderMessages(currentCustomerId);
+                renderCustomerList();
+            }
+        }
+    </script>
+</body>
+</html>

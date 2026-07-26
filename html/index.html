@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiệm sách Midori</title>
+    <link rel = "stylesheet" href="css/index.css" >
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body background="images/background1.jpg" style="background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
+    <header>
+        <nav class = "navbar">
+            <a href = "index.html" class = "logo" >
+                <img src = "images/logo.png" alt = "Logo Midori" class = "logo-img" >
+            </a>
+            <form action="#" method="get" class = "search-box">
+                <input type = "text" placeholder = "Midori tìm cho bạn..." >
+                <button type = "submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <ul class = "nav-links">
+                <li><a href = "index.html" class="nav-item active" ><i class="fa-solid fa-house"></i></a></li>
+                <li><a href = "products.html"><i class="fa-solid fa-box-open"></i></a></li>
+                <li><a href = "cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li><a href = "contact.html"><i class="fa-solid fa-phone"></i></a></li>
+                <li><a href = "login.html"><i class="fa-solid fa-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="banner">
+            <a href="products.html">
+                <img src="images/Banner.jpg" width="100%" height="auto" alt="Banner">
+            </a>
+            <div class="category-section">
+                <table class="category-table" border="0">
+                    <tr>
+                        <th>Danh Mục Sản Phẩm</th>
+                    </tr>
+                    <tr>
+                        <td><a href="products.html?category=1">Truyện tranh</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="products.html?category=2">Tiểu thuyết</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="products.html?category=3">Sách chữa lành</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="products.html?category=4">Sách tâm lý</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="products.html?category=5">Sách trinh thám</a></td> 
+                    </tr>
+                    <tr>
+                        <td><a href="products.html?category=6">Sách kỹ năng</a></td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- KHU VỰC 1: SÁCH BÁN CHẠY -->
+        <section class="section-bestseller">
+            <h2>SÁCH BÁN CHẠY</h2>
+            <!-- JS sẽ đổ 5-6 sản phẩm bán chạy vào đây -->
+            <div id="bestseller-list" class="product-grid"></div>
+        </section>
+
+        <!-- KHU VỰC 2: TOP SÁCH HOT HIỆN NAY -->
+        <section class="section-hot">
+            <h2>TOP SÁCH HOT HIỆN NAY</h2>
+            <!-- JS sẽ đổ các sản phẩm hot vào đây -->
+            <div id="hot-list" class="product-grid"></div>
+        </section>
+
+        <!-- KHU VỰC GIỚI THIỆU & CÂU CHUYỆN TIỆM MIDORI -->
+        <section class="about-section">
+        <div class="about-container">
+            
+            <!-- Phần 1: Đôi dòng giới thiệu -->
+            <div class="about-story">
+            <div class="about-text">
+                <span class="sub-title">Chào bạn, mình là cô chủ nhỏ của Midori </span>
+                <h2>Gửi chút dịu dàng vào từng hạt cườm nhỏ...</h2>
+                <p>
+                Tiệm Nhỏ Midori bắt đầu từ tình yêu với những chiếc vòng tay hạt cườm nhỏ nhắn, nhiều màu sắc. 
+                Với mình, mỗi phụ kiện không chỉ là đồ trang sức, mà còn là một câu chuyện, một chút niềm vui nho nhỏ đồng hành cùng bạn mỗi ngày.
+                </p>
+                <p>
+                Tất cả sản phẩm tại tiệm đều do chính tay mình tự thiết kế, lựa chọn từng hạt cườm và hoàn thiện thủ công. Hy vọng những món quà nhỏ từ Midori sẽ khiến ngày của bạn thêm phần xinh xắn!
+                </p>
+            </div>
+            <!-- Ảnh góc làm việc hoặc ảnh xỏ cườm xinh xắn -->
+            <div class="about-img">
+                <img src="images/about-store.jpg" alt="Góc nhỏ Midori">
+            </div>
+            </div>
+            <!-- Khung thông điệp nhắn gửi -->
+            <div class="note-content">
+                <i class="fa-solid fa-heart"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-leaf"></i>
+                <p class="note-quote">
+                "Mong rằng những món phụ kiện nho nhỏ từ Tiệm Midori sẽ làm ngày của bạn thêm chút sắc màu vui tươi và thật nhiều dịu dàng!"
+                </p>
+                <p class="note-author">— From Midori with love —</p>
+            </div>
+
+        </div>
+        </section>
+
+
+     </main>
+
+
+
+     <footer class="site-footer">
+        <div class="footer-container">
+    
+    <!-- Cột 1: Giới thiệu tiệm -->
+        <div class="footer-col">
+            <h3>Tiệm Nhỏ Midori</h3>
+            <p>Chuyên phụ kiện cườm, vòng tay và trang sức thủ công xinh xắn mang đến niềm vui nhỏ mỗi ngày cho bạn.</p>
+        </div>
+
+    <!-- Cột 2: Điều hướng nhanh -->
+        <div class="footer-col">
+            <h4>Liên Kết Nhanh</h4>
+            <ul>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="products.html">Sản Phẩm</a></li>
+                <li><a href="cart.html">Giỏ Hàng</a></li>
+                <li><a href="#">Liên Hệ</a></li>
+            </ul>
+        </div>
+
+        <!-- Cột 3: Thông tin liên hệ -->
+        <div class="footer-col">
+            <h4>Thông Tin Liên Hệ</h4>
+            <p>📍 Địa chỉ: Hà Nội, Việt Nam</p>
+            <p>📞 Hotline/Zalo: 0987 654 321</p>
+            <p>💬 Facebook: <a href="https://www.facebook.com/tiemnhomidori" target="_blank">Tiệm Nhỏ Midori</a></p>
+            <p>✉️ Email: tiemnhomidori@gmail.com</p>
+        </div>
+
+    <!-- Dòng bản quyền dưới cùng -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 Tiệm Nhỏ Midori. All rights reserved.</p>
+        </div>
+    </footer>
+<script src="js/index.js"></script>
+</body>
+</html>
